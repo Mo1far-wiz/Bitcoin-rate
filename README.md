@@ -28,6 +28,9 @@ Than run following commands:
 docker-compose up
 ```
 ```cmd
+go mod tidy
+```
+```cmd
 go run ./cmd/web
 ```
 
