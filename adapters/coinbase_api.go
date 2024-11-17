@@ -1,11 +1,23 @@
 package adapters
 
 import (
-	"bitcoin-rate/models"
 	"encoding/json"
 	"io"
 	"net/http"
+	"strconv"
 )
+
+type CoinbaseApiResponse struct {
+	Data struct {
+		Amount   string `json:"amount"`
+		Base     string `json:"base"`
+		Currency string `json:"currency"`
+	} `json:"data"`
+}
+
+func (cb *CoinbaseApiResponse) GetAmountAsFloat64() (float64, error) {
+	return strconv.ParseFloat(cb.Data.Amount, 64)
+}
 
 type CoinbaseApi struct{}
 
@@ -21,7 +33,7 @@ func (cb *CoinbaseApi) GetBTCRate() (float64, error) {
 		return 0, err
 	}
 
-	var rate models.CoinbaseApiResponse
+	var rate CoinbaseApiResponse
 	err = json.Unmarshal(body, &rate)
 	if err != nil {
 		return 0, err
