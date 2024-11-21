@@ -14,7 +14,7 @@ import (
 // my ids and emails are unique so i guess composite primary key is quite fitting
 type Emails struct {
 	ID    uint   `gorm:"primaryKey"`
-	Email string `gorm:"uniqueIndex"`
+	Email string `gorm:"unique"`
 }
 
 var DB *gorm.DB
