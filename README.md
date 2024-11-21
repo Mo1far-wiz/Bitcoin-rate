@@ -4,7 +4,7 @@ This is simple Backend application that takes BTC rate from public API and sent 
 
 ## Technologies
 - Gin
-- Postgres
+- Gorm (postgres)
 - Docker-compose
 
 ## To run
